@@ -7,11 +7,13 @@ import com.ware.util.HibernateUtil;
 
 public class SupplierDAO {
 
-    public void save(Supplier s1) {
-        Session s = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = s.beginTransaction();
-        s.save(s1);
+    public void save(Supplier s) {   // renamed from saveSupplier to save
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+
+        session.save(s);
+
         tx.commit();
-        s.close();
+        session.close();
     }
 }
